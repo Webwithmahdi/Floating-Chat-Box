@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  font-family: "Poppins", sans-serif;
+}
+html {
+  font-size: 62.5%;
+}
+.chatbox {
+  position: absolute;
+  width: 250px;
+  height: 470px;
+  right: 25px;
+  bottom: 25px;
+  pointer-events: none;
+}
+.chat-toggle {
+  appearance: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  background-color: lightskyblue;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  border-radius: 10px;
+}
+.chat-toggle::after,
+.chat-toggle::before {
+  position: absolute;
+  content: "\f086";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  transition: opacity 0.3s ease;
+  font-size: 20px;
+  color: blue;
+}
+.chat-toggle::before {
+  content: "\2b";
+  opacity: 0;
+  transform: rotate(45deg);
+}
+.chat-toggle:checked {
+  transform: translateY(-420px);
+}
+.chat-toggle:checked::after {
+  opacity: 0;
+}
+.chat-toggle:checked::before {
+  opacity: 1;
+}
+.chat-toggle:checked + .chatbox-inner {
+  height: 350px;
+}
+.chatbox-inner {
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 0;
+  background-color: #fcfcfe;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.chatbox-inner h2 {
+  text-align: center;
+  margin: 10px 0 20px 0;
+  font-size: 20px;
+}
+.recieved-message,
+.sent-message {
+  display: block;
+  margin: 0 5px 30px 5px;
+}
+.sent-message {
+  text-align: right;
+  color: white;
+}
+.recieved-message span {
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px 10px 10px 0;
+  font-size: 13px;
+}
+.sent-message span {
+  background-color: #605ac3;
+  padding: 10px;
+  border-radius: 10px 10px 0 10px;
+  font-size: 13px;
+}
+.chatbox-inner form {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #F4F4F6;
+}
+.chatbox-inner form input,
+.chatbox-inner form button {
+  padding: 10px;
+  outline: none;
+  border: none;
+  background: none;
+}
+.chatbox-inner form button {
+  color: #605AC3;
+  cursor: pointer;
+}
